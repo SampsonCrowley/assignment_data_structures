@@ -20,7 +20,8 @@ class HashTable
 
   end
 
-  def define
+  def define(term)
     # locates word, returns definition
+    buckets[hash(term)].crawl(term).definition
   end
 end

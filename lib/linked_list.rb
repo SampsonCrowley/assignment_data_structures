@@ -40,7 +40,9 @@ class LinkedList
 
   def crawl(term)
     node = head
-    node = node.pointer until node.word == term
+    until node.nil? || node.word == term
+      node = node.pointer unless node.nil?
+    end
     node
   end
 

@@ -23,4 +23,14 @@ describe HashTable do
       expect(ht.buckets[0].read(0).definition).to eq('fruit')
     end
   end
+
+  describe '#define' do
+    it "returns a description when given a word" do
+      ht.insert('kumquat', 'the weirdest fruit')
+      expect(ht.define('kumquat')).to eq('the weirdest fruit')
+    end
+    it 'returns "not found" if the word doesn\'t exist' do
+      expect(ht.define('passionfruit')).to eq("Not found")
+    end
+  end
 end

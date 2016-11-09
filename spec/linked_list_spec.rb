@@ -44,6 +44,9 @@ describe LinkedList do
     it 'returns the node a specified term' do
       expect(ll_noded.crawl('second').definition).to eq('second word')
     end
+    it 'should return nil if the word isn\'t found' do
+      expect(ll_noded.crawl('nineteenth')).to be_nil
+    end
   end
 
 end
