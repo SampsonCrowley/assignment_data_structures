@@ -12,8 +12,7 @@ class HashTable
   end
 
   def insert(word, definition)
-    bucket = hash(word)
-    buckets[bucket].add_node(word, definition)
+    buckets[hash(word)].add_node(word, definition)
   end
 
   def render_list
