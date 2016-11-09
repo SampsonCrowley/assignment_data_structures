@@ -29,8 +29,28 @@ describe HashTable do
       ht.insert('kumquat', 'the weirdest fruit')
       expect(ht.define('kumquat')).to eq('the weirdest fruit')
     end
-    it 'returns "not found" if the word doesn\'t exist' do
-      expect(ht.define('passionfruit')).to eq("Not found")
+    it 'returns "Not Found" if the word doesn\'t exist' do
+      expect(ht.define('passionfruit')).to eq("Not Found")
+    end
+  end
+
+  describe '#render_list' do
+    it "prints a readable dictionary" do
+      ht.insert('kumquat', 'the weirdest fruit')
+      ht.insert('apple', 'the weirdest fruit')
+      ht.insert('banana', 'the weirdest fruit')
+      expect{ht.render_list}.not_to raise_error
+      expect{ht.render_list}.to output(/kumquat/).to_stdout
+    end
+  end
+
+  describe '#load_file' do
+    it "can load a file without crashing" do
+      expect{ht.load_file("dictionary_words.txt")}.not_to raise_error
+    end
+    it "saves each word and it's definition" do
+      ht.load_file("dictionary_words.txt")
+      expect(ht.define('kumquat')).to eq("The definition of kumquat is kumquat")
     end
   end
 end

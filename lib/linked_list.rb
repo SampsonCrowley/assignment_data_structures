@@ -41,6 +41,7 @@ class LinkedList
   def crawl(term)
     node = head
     until node.nil? || node.word == term
+      yield(node) if block_given?
       node = node.pointer unless node.nil?
     end
     node
