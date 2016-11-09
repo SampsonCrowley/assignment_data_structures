@@ -10,7 +10,7 @@ class LinkedList
 
   # Time complexity: O(1)
   def add_node(word, definition)
-    new_node = Node.new(word, definition, nil)
+    new_node = Node.new(word, definition)
     @tail.pointer = new_node unless empty?
     @head = new_node if empty?
     @tail = new_node
